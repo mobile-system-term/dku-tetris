@@ -5,11 +5,12 @@ plugins {
 
 android {
     namespace = "com.dku.tetris"
-    compileSdk = 35
+    compileSdk = 16
+    ndkVersion = "16.1.4479499"
 
     defaultConfig {
         applicationId = "com.dku.tetris"
-        minSdk = 30
+        minSdk = 16
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -27,14 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        prefab = true
+        jvmTarget = "1.8"
     }
     externalNativeBuild {
         cmake {
@@ -42,14 +40,17 @@ android {
             version = "3.22.1"
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.games.activity)
+    implementation("androidx.core:core-ktx:1.6.0")
+    implementation("androidx.appcompat:appcompat-resources:1.3.1")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
