@@ -1,29 +1,45 @@
 package com.dku.tetris
 
-import android.view.View
-import com.google.androidgamesdk.GameActivity
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
+import android.widget.TextView
 
-class MainActivity : GameActivity() {
-    companion object {
-        init {
-            System.loadLibrary("tetris")
+class MainActivity : AppCompatActivity() {
+    private lateinit var hal: HalController
+    private lateinit var dipSwitchValueText: TextView
+    private lateinit var readDipSwitchBtn: Button
+    private lateinit var buzzerOnBtn: Button
+    private lateinit var buzzerOffBtn: Button
+    private lateinit var writeLcdBtn: Button
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        hal = HalController()
+
+        dipSwitchValueText = findViewById(R.id.dipSwitchValue)
+        readDipSwitchBtn = findViewById(R.id.readDipSwitchBtn)
+        buzzerOnBtn = findViewById(R.id.buzzerOnBtn)
+        buzzerOffBtn = findViewById(R.id.buzzerOffBtn)
+        writeLcdBtn = findViewById(R.id.writeLcdBtn)
+
+        readDipSwitchBtn.setOnClickListener {
+            val value = hal.readDipSwitch()
+            dipSwitchValueText.text = "Dip Switch: $value"
         }
-    }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) {
-            hideSystemUi()
+        buzzerOnBtn.setOnClickListener {
+            hal.buzzerOn()
         }
-    }
 
-    private fun hideSystemUi() {
-        val decorView = window.decorView
-        decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+        buzzerOffBtn.setOnClickListener {
+            hal.buzzerOff()
+        }
+
+        writeLcdBtn.setOnClickListener {
+            hal.writeTextLcd("Hello Hanback")
+        }
     }
 }
