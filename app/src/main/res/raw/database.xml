@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <Setting>
+        <ScoreLimit value="1000000000"/>
+        <LineScore value="1000"/>
+        <TimeLevel>
+            <Level1 level="0" timestamp="0" dropspeed="100"/>
+            <Level2 level="1" timestamp="100" dropspeed="200"/>
+            <Level3 level="2" timestamp="200" dropspeed="300"/>
+            <Level4 level="3" timestamp="300" dropspeed="400"/>
+            <Level5 level="4" timestamp="400" dropspeed="500"/>
+            <Level6 level="5" timestamp="500" dropspeed="600"/>
+            <Level7 level="6" timestamp="600" dropspeed="700"/>
+            <Level8 level="7" timestamp="700" dropspeed="800"/>
+            <Level9 level="8" timestamp="800" dropspeed="900"/>
+            <Level10 level="9" timestamp="900" dropspeed="1000"/>
+        </TimeLevel>
+
+        <BoardSize width="6" height="30"/>
+    </Setting>
+
+    <HighScore>
+        <Score value="200000" timestamp="2025-06-15 00:30:00" player="AA"/>
+        <Score value="10000" timestamp="2025-03-25 11:30:00" player="AA"/>
+        <Score value="120000" timestamp="2025-01-22 16:05:20" player="Bac"/>
+        <Score value="30000" timestamp="2025-05-20 02:10:52" player="AC"/>
+    </HighScore>
+
+    <SaveGames>
+    </SaveGames>
+</Database>
