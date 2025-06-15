@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="BoardView">
+        <attr name="columns" format="integer"/>
+        <attr name="rows" format="integer"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="minSpeed" format="integer"/>
+        <attr name="maxSpeed" format="integer"/>
+    </declare-styleable>
+</resources>

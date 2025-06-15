@@ -6,7 +6,7 @@ import com.dku.tetris.utils.Coord
 class Piece(val type: PieceType, columns: Int) {
     val color: Int = type.color
     private var rotation: Int = 0
-    private val coord = Coord(0, columns)
+    val coord = Coord(0, columns)
 
     var blockPos: Array<Coord> = arrayOf()
         private set
