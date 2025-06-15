@@ -10,7 +10,7 @@ std::string errorMessage = "ERROR";
 std::string successMessage = "SUCCEED";
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_dku_tetris_GlobalNative_ledControl(
+Java_com_dku_tetris_HwController_ledControl(
         JNIEnv *env,
         jclass clazz,
         jint bitCount
@@ -31,7 +31,7 @@ Java_com_dku_tetris_GlobalNative_ledControl(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_dku_tetris_GlobalNative_segmentControl(
+Java_com_dku_tetris_HwController_segmentControl(
         JNIEnv *env,
         jclass clazz,
         jint data
@@ -50,7 +50,7 @@ Java_com_dku_tetris_GlobalNative_segmentControl(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_dku_tetris_GlobalNative_lcdClear(
+Java_com_dku_tetris_HwController_lcdClear(
         JNIEnv *env,
         jclass clazz
 ) {
@@ -64,7 +64,7 @@ Java_com_dku_tetris_GlobalNative_lcdClear(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_dku_tetris_GlobalNative_lcdPrint(
+Java_com_dku_tetris_HwController_lcdPrint(
         JNIEnv *env,
         jclass clazz,
         jint lineIndex,
@@ -92,7 +92,7 @@ Java_com_dku_tetris_GlobalNative_lcdPrint(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_dku_tetris_GlobalNative_piezoControl(
+Java_com_dku_tetris_HwController_piezoControl(
         JNIEnv *env,
         jclass clazz,
         jchar data
@@ -109,7 +109,7 @@ Java_com_dku_tetris_GlobalNative_piezoControl(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_dku_tetris_GlobalNative_dotMatrixControl(
+Java_com_dku_tetris_HwController_dotMatrixControl(
         JNIEnv *env,
         jclass clazz,
         jstring data
@@ -130,7 +130,7 @@ Java_com_dku_tetris_GlobalNative_dotMatrixControl(
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_dku_tetris_GlobalNative_fullColorLedControl(
+Java_com_dku_tetris_HwController_fullColorLedControl(
         JNIEnv *env,
         jclass clazz,
         jint led_num,
