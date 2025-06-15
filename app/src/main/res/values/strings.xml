@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">tetris</string>
+    <string name="app_name">Tetris</string>
+    <string name="play_game">Play</string>
+    <string name="exit">Exit</string>
+    <string name="back">Back</string>
+    <string name="time">Time</string>
+    <string name="name">Name</string>
+    <string name="score">Score</string>
 </resources>
