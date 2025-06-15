@@ -16,7 +16,7 @@
             <Level10 level="9" timestamp="900" dropspeed="1000"/>
         </TimeLevel>
 
-        <BoardSize width="6" height="30"/>
+        <BoardSize width="16" height="30"/>
     </Setting>
 
     <HighScore>
