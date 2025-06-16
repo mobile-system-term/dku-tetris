@@ -14,9 +14,7 @@ import java.util.Queue;
 import java.util.Random;
 
 
-
-
-class Board(val rows: Int, val columns: Int, levels: MutableList<MutableList<Int>>?) {
+class Board(private val rows: Int, private val columns: Int, levels: MutableList<MutableList<Int>>?) {
     interface OnNextPieceListener {
         fun onNewNextPiece(nextPiece: PieceType)
     }

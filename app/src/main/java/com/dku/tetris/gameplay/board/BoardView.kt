@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
+import android.view.KeyEvent
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -146,6 +147,21 @@ class BoardView @JvmOverloads constructor(
         }
         return false
     }
+
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        if (event.action == KeyEvent.ACTION_DOWN) {
+            when (event.keyCode) {
+                12 -> board.steer(-1) // move left
+                14 -> board.steer(1)  // move right
+                16 -> board.rotate(1) // rotate piece
+                else -> return super.dispatchKeyEvent(event)
+            }
+            return true
+        }
+        return super.dispatchKeyEvent(event)
+    }
+
+
 
     fun pause() {
         board.pause()
