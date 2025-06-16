@@ -1,5 +1,6 @@
 package com.dku.tetris
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -9,8 +10,8 @@ import com.dku.tetris.utils.DB
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var btnPlayNew: Button
-    private lateinit var btnExitApp: Button
+    private lateinit var playButton: Button
+    private lateinit var exitButton: Button
 
     companion object {
         init {
@@ -25,12 +26,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
 
-        btnPlayNew.setOnClickListener(this)
-        btnExitApp.setOnClickListener(this)
+        playButton.setOnClickListener(this)
+        exitButton.setOnClickListener(this)
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.playButton -> {
+                startActivity(Intent(applicationContext, GameActivity::class.java))
+            }
+            R.id.exitButton -> {
+                finish()
+            }
+        }
     }
 }
 
