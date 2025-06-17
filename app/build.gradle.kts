@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.dku.tetris"
-    compileSdk = 16
+    compileSdk = 35
     ndkVersion = "16.1.4479499"
 
     defaultConfig {

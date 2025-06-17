@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         DB.createDatabaseIfNotExists(applicationContext)
         setContentView(R.layout.activity_main)
 
+        playButton = findViewById(R.id.playButton)
+        exitButton = findViewById(R.id.exitButton)
 
         playButton.setOnClickListener(this)
         exitButton.setOnClickListener(this)

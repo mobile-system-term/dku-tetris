@@ -1,6 +1,8 @@
 package com.dku.tetris
 
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -84,5 +86,20 @@ class GameActivity : AppCompatActivity(), Board.OnLineClearListener, Board.OnGam
         isGameOver = true
         segment.stop()
         finish()
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        Log.d("BoardView", "KeyEvent: ${event.keyCode}, Action: ${event.action}")
+        print("KeyEvent: ${event.keyCode}, Action: ${event.action}")
+        if (event.action == KeyEvent.ACTION_DOWN) {
+            when (event.keyCode) {
+                11 -> boardView.steerLeft() // move left
+                12 -> boardView.steerRight()  // move right
+                13 -> boardView.rotate() // rotate piece
+                else -> return super.onKeyDown(keyCode, event);
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

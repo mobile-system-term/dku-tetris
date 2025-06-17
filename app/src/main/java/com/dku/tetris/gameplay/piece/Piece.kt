@@ -79,7 +79,7 @@ class Piece(val type: PieceType, columns: Int) {
 
     fun getRightColliders(): Array<Coord> = rightColliders.toTypedArray()
 
-    fun getCoord(): Coord = coord
+//    fun getCoord(): Coord = coord
 
     override fun toString(): String {
         return "${type.name}_PIECE"

@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log
 import android.view.GestureDetector;
 import android.view.KeyEvent
 import android.view.MotionEvent;
@@ -27,7 +28,7 @@ class BoardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
-) : View(context, attrs, defStyle), View.OnTouchListener {
+) : View(context, attrs, defStyle) {
 
     private val boardPaint = Paint()
     private val borderPaint = Paint().apply {
@@ -35,6 +36,10 @@ class BoardView @JvmOverloads constructor(
         strokeWidth = 5f
         color = Color.BLACK
     }
+
+    fun steerLeft() = board.steer(-1)
+    fun steerRight() = board.steer(1)
+    fun rotate() = board.rotate(1)
 
     private var rows = 20
     private var columns = 10
@@ -44,7 +49,7 @@ class BoardView @JvmOverloads constructor(
     private lateinit var board: Board
     private lateinit var timer: Timer
     private lateinit var handler: Handler
-    private lateinit var gestureDetector: GestureDetector
+//    private lateinit var gestureDetector: GestureDetector
 
     init {
         init(context, attrs, defStyle)
@@ -77,25 +82,25 @@ class BoardView @JvmOverloads constructor(
                 }
             }, 1000, 100)
 
-            gestureDetector =
-                GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
-                    override fun onDown(e: MotionEvent): Boolean = true
-
-                    override fun onFling(
-                        e1: MotionEvent,
-                        e2: MotionEvent,
-                        vx: Float,
-                        vy: Float
-                    ): Boolean {
-                        val dx = e2.x - e1.x
-                        val dy = e2.y - e1.y
-                        if (Math.abs(dx) <= 100 && Math.abs(dy) > 50) {
-                            if (dy < 0) board.rotate(1) else board.hardDrop()
-                        }
-                        return true
-                    }
-                })
-
+//            gestureDetector =
+//                GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
+//                    override fun onDown(e: MotionEvent): Boolean = true
+//
+//                    override fun onFling(
+//                        p0: MotionEvent?,
+//                        e1: MotionEvent,
+//                        vx: Float,
+//                        vy: Float
+//                    ): Boolean {
+//                        val dx = e2.x - e1.x
+//                        val dy = e2.y - e1.y
+//                        if (Math.abs(dx) <= 100 && Math.abs(dy) > 50) {
+//                            if (dy < 0) board.rotate(1) else board.hardDrop()
+//                        }
+//                        return true
+//                    }
+//                })
+//
         }
     }
 
@@ -139,29 +144,29 @@ class BoardView @JvmOverloads constructor(
         }
     }
 
-    override fun onTouch(v: View, event: MotionEvent): Boolean {
-        if (gestureDetector.onTouchEvent(event)) return true
-        if (event.action == MotionEvent.ACTION_UP) {
-            if (event.x < width / 2f) board.steer(-1) else board.steer(1)
-            return true
-        }
-        return false
-    }
+//    override fun onTouch(v: View, event: MotionEvent): Boolean {
+////        if (gestureDetector.onTouchEvent(event)) return true
+//        if (event.action == MotionEvent.ACTION_UP) {
+//            if (event.x < width / 2f) board.steer(-1) else board.steer(1)
+//            return true
+//        }
+//        return false
+//    }
 
-    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        if (event.action == KeyEvent.ACTION_DOWN) {
-            when (event.keyCode) {
-                12 -> board.steer(-1) // move left
-                14 -> board.steer(1)  // move right
-                16 -> board.rotate(1) // rotate piece
-                else -> return super.dispatchKeyEvent(event)
-            }
-            return true
-        }
-        return super.dispatchKeyEvent(event)
-    }
-
-
+//    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+//        Log.d("BoardView", "KeyEvent: ${event.keyCode}, Action: ${event.action}")
+//        print("KeyEvent: ${event.keyCode}, Action: ${event.action}")
+//        if (event.action == KeyEvent.ACTION_DOWN) {
+//            when (event.keyCode) {
+//                12 -> board.steer(-1) // move left
+//                14 -> board.steer(1)  // move right
+//                16 -> board.rotate(1) // rotate piece
+//                else -> return super.onKeyDown(keyCode, event);
+//            }
+//            return true
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 
     fun pause() {
         board.pause()
