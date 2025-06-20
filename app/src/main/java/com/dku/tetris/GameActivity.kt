@@ -88,9 +88,10 @@ class GameActivity : AppCompatActivity(), Board.OnLineClearListener, Board.OnGam
         finish()
     }
 
+    // 키 입력은 BoardView가 아닌 GameActivity에서 처리함
+    // → 포커스 손실 없이 항상 안정적으로 동작하도록 수정
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         Log.d("BoardView", "KeyEvent: ${event.keyCode}, Action: ${event.action}")
-        print("KeyEvent: ${event.keyCode}, Action: ${event.action}")
         if (event.action == KeyEvent.ACTION_DOWN) {
             when (event.keyCode) {
                 11 -> boardView.steerLeft() // move left
