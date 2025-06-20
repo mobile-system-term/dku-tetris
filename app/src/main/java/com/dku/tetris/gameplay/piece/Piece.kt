@@ -39,7 +39,8 @@ class Piece(val type: PieceType, columns: Int) {
 
         for (i in 0..3) {
             var j = data[i] % 4
-            if (rotation > 1) j = 4 - j
+            // column이 0부터 시작하므로, 0, 1, 2, 3 -> 3, 2, 1, 0
+            if (rotation > 1) j = 3 - j
             val k = if ((rotation == 0 || rotation == 3) == (data[i] < 4)) 0 else 1
 
             blockPos[i] = if (rotation % 2 == 0)
